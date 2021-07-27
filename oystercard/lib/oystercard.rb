@@ -1,5 +1,4 @@
 class Oystercard 
-    
     MAX_BALANCE = 90
     MIN_BALANCE = 1
   
@@ -17,10 +16,6 @@ class Oystercard
     @balance += amount
   end
 
-  def deducts(amount)
-    @balance -= amount
-  end
-
   def in_journey?
     @in_journey
   end
@@ -30,8 +25,15 @@ class Oystercard
     @in_journey = true
   end
 
-  def touch_out
+  def touch_out()
+    deducts(MIN_BALANCE)
     @in_journey = false
   end
+  
+  private
+
+def deducts(amount)
+  @balance -= amount
+end
 
 end
